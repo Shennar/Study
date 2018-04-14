@@ -14,7 +14,6 @@ public class Game {
         System.out.println("any horizontal, vertical or diagonal line");
         System.out.println("on a game field, which consists of 6 rows and 7 columns.");
         System.out.println("Your move is to choose a column to place your mark,");
-        System.out.println("which will be moved by gravity to the bottom of the column");
         System.out.println("which will be moved by gravity to the bottom of the column.");
         System.out.println("Good luck an have fun! :)");
         Random rand = new Random();
