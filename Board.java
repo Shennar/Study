@@ -1,10 +1,9 @@
-package GravyT;
+package gravyt;
 
-import static GravyT.Marks.EMPTY;
+import static gravyt.Mark.EMPTY;
 
 public class Board {
-    private Marks[][] board = new Marks[6][7];
-    private Marks playerMark;
+    private Mark[][] board = new Mark[6][7];
 
     public Board() {
         for (int i = 0; i < 6; i++) {
@@ -18,7 +17,7 @@ public class Board {
         for (int i = 0; i < 6; i++) {
             System.out.print("| ");
             for (int j = 0; j < 7; j++) {
-                System.out.print(board[i][j]+" ");
+                System.out.print(board[i][j] + " ");
             }
             System.out.println("|");
         }
@@ -32,7 +31,7 @@ public class Board {
         } else return false;
     }
 
-    public void placeMark(int place) {
+    public void placeMark(Mark playerMark, int place) {
         int rowToPlace = 0;
         for (int i = 0; i < 6; i++) {
             if (board[i][place] == EMPTY) {
@@ -42,7 +41,7 @@ public class Board {
         board[rowToPlace - 1][place] = playerMark;
     }
 
-    public boolean checkHorizontalLine() {
+    public boolean checkHorizontalLine(Mark playerMark) {
         boolean gotLine = false;
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 4; j++) {
@@ -57,7 +56,7 @@ public class Board {
         return gotLine;
     }
 
-    public boolean checkVerticalLine() {
+    public boolean checkVerticalLine(Mark playerMark) {
         boolean gotLine = false;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 7; j++) {
@@ -72,7 +71,7 @@ public class Board {
         return gotLine;
     }
 
-    public boolean checkDiagonalUpLine() {
+    public boolean checkDiagonalUpLine(Mark playerMark) {
         boolean gotLine = false;
         for (int i = 5; i > 2; i--) {
             for (int j = 0; j < 4; j++) {
@@ -87,7 +86,7 @@ public class Board {
         return gotLine;
     }
 
-    public boolean checkDiagonalDownLine() {
+    public boolean checkDiagonalDownLine(Mark playerMark) {
         boolean gotLine = false;
         for (int i = 5; i > 2; i--) {
             for (int j = 6; j > 2; j--) {
@@ -102,7 +101,18 @@ public class Board {
         return gotLine;
     }
 
-    public Marks setPlayerMark(Marks mark) {
-        return playerMark = mark;
+    public boolean isBoardFull() {
+        boolean hasEmpty = true;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (board[i][j] == EMPTY) {
+                    hasEmpty = false;
+                    break;
+                }
+                if (!hasEmpty) break;
+            }
+        }
+        return hasEmpty;
     }
+
 }

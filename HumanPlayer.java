@@ -1,11 +1,11 @@
-package GravyT;
+package gravyt;
 
 import java.util.Scanner;
 
-public class HumanPlayer implements Players {
+public class HumanPlayer implements Player {
     private int myMove;
-    private String playerName = "Human player";
-    private Marks mark = Marks.X;
+    private Mark mark;
+    private String playerName;
 
     @Override
     public int makeNextMove() {
@@ -30,8 +30,9 @@ public class HumanPlayer implements Players {
     }
 
     @Override
-    public Marks getMark() {
-        return mark;
+    public Mark setMark(int playerNumber) {
+        if (playerNumber==1)return mark=Mark.X;
+        else return mark=Mark.O;
     }
 
     @Override
@@ -39,4 +40,13 @@ public class HumanPlayer implements Players {
         return playerName;
     }
 
+    @Override
+    public Mark getMark(){
+        return mark;
+    }
+
+    @Override
+    public void setPlayerName(String name){
+        playerName = name;
+    }
 }

@@ -1,10 +1,10 @@
-package GravyT;
+package gravyt;
 
 import java.util.Random;
 
-public class PCPlayer implements Players {
-    private Marks mark = Marks.O;
-    private String playerName = "Computer player";
+public class PCPlayer implements Player {
+    private Mark mark;
+    private String playerName;
 
     @Override
     public int makeNextMove() {
@@ -13,12 +13,22 @@ public class PCPlayer implements Players {
     }
 
     @Override
-    public Marks getMark() {
-        return mark;
+    public Mark setMark(int playerNumber) {
+        if (playerNumber==1)return mark=Mark.X;
+        else return mark=Mark.O;
     }
 
     @Override
     public String getPlayerName() {
         return playerName;
+    }
+    @Override
+    public Mark getMark(){
+        return mark;
+    }
+
+    @Override
+    public void setPlayerName(String name){
+        playerName = name;
     }
 }
